@@ -1,0 +1,7 @@
+\conninfo
+
+postgres://{user}:{password}@{hostname}:{port}/{database-name}
+
+set DATABASE_URL=postgres://postgres:Ignaciooo99.@localhost:5432/project1
+set FLASK_ENV=development
+

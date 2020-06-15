@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book
+{% endblock %}
+
+{% block body %}
+    <h1>Book Details</h1>
+
+    <ul>
+        <li>isbn: {{ book.isbn }}</li>
+        <li>title: {{ book.title }}</li>
+        <li>author: {{ book.author}}</li>
+        <li>year: {{ book.year}}</li>
+        {% if grbook == "" %}
+        <li>no api response</li>
+        {%else%}
+        <li>number ratings: {{ grbook.work_ratings_count}}</li>
+        <li>ratings: {{ grbook.average_rating}}</li>
+        {%endif%}
+        {% for review in reviews %}
+        <h5>{{review.username}}:</h5>
+        <li>{{review.rating}}/5</li>
+        <p>
+            {{review.review}}
+        </p>
+        {% else %}
+        <li>No Reviews, give your thoughts by submitting one!</li>
+        {%endfor%}
+    </ul>
+
+{% endblock %}
