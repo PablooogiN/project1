@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block body %}
+<div class="center">
+    <h1>Api Calls</h1>
+    <p>called using <code>/api/isbn </code>return the following information:</p>
+
+    <code>
+        {
+            <br>
+            "title": "Memory",
+            "author": "Doug Lloyd",
+            "year": 2015,
+            "isbn": "1632168146",
+            "review_count": 28,
+            "average_score": 5.0
+            <br>
+        }
+    </code>
+</div>
+{% endblock %}

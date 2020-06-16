@@ -1,0 +1,25 @@
+.center {
+        text-align: center;
+        /* position: absolute; */
+        padding-top: 30%;
+}
+
+body,html{
+        height:100%;
+}
+
+input {
+        width: 375px;
+        height: 35px;
+        text-align: center;
+}
+
+h1{
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 4.5rem !important;
+}
+
+.title{
+        font-weight: 300px;
+}

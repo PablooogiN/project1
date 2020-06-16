@@ -5,28 +5,55 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Book Details</h1>
+    <h1>{{ book.title }}</h1>
+    <h4>By: {{ book.author}}</h4>
 
-    <ul>
-        <li>isbn: {{ book.isbn }}</li>
-        <li>title: {{ book.title }}</li>
-        <li>author: {{ book.author}}</li>
-        <li>year: {{ book.year}}</li>
-        {% if grbook == "" %}
-        <li>no api response</li>
-        {%else%}
-        <li>number ratings: {{ grbook.work_ratings_count}}</li>
-        <li>ratings: {{ grbook.average_rating}}</li>
-        {%endif%}
+    <p>isbn: {{ book.isbn }}</p>
+    <p>year: {{ book.year}}</p>
+
+    {% if grbook == "" %}
+        <h5>Book not found on Goodreads :(</h5>
+    {%else%}
+        <h3>Goodreads Reviews:</h3>
+        <p>number ratings: {{ grbook.work_ratings_count}}</p>
+        <p>ratings: {{ grbook.average_rating}}</p>
+    {%endif%}
+    <br>
         {% for review in reviews %}
-        <h5>{{review.username}}:</h5>
-        <li>{{review.rating}}/5</li>
-        <p>
-            {{review.review}}
-        </p>
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">@{{review.username}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{review.rating}}/5</h6>
+              <p class="card-text">"{{review.review}}"</p>
+            </div>
+        </div>
+        <br>
         {% else %}
-        <li>No Reviews, give your thoughts by submitting one!</li>
+        <p>No Reviews, give your thoughts by submitting one!</p>
         {%endfor%}
-    </ul>
+
+    <form action="{{ url_for('book', isbn=book.isbn) }}" method="post">
+
+        <div class="form-group">
+        <label for="rating">Rating</label>
+        <select class="form-control" name="rating">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        </div>
+
+        <div class="form-group">
+        <label for="review">Review</label>
+        <textarea class="form-control" name="review" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary">Submit</button>
+        </div>
+
+    </form>
 
 {% endblock %}
